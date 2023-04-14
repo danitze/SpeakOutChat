@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/menu_nav_graph"
+    app:startDestination="@id/fragment_menu">
+
+    <include app:graph="@navigation/partner_search_nav_graph" />
+
+    <fragment
+        android:id="@+id/fragment_menu"
+        android:name="com.coursework.speakoutchat.menu_ui.MenuFragment"
+        android:label="MenuFragment" >
+        <action
+            android:id="@+id/action_menu_to_partner_search"
+            app:destination="@id/partner_search_nav_graph" />
+    </fragment>
+</navigation>

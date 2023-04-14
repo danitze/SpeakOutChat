@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/fragment_login">
+
+    <include app:graph="@navigation/menu_nav_graph" />
+
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="com.coursework.speakoutchat.auth_ui.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_login_to_sign_up"
+            app:destination="@id/fragment_sign_up" />
+        <action
+            android:id="@+id/action_login_to_menu"
+            app:destination="@id/menu_nav_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_sign_up"
+        android:name="com.coursework.speakoutchat.auth_ui.sign_up.SignUpFragment"
+        android:label="SignUpFragment" />
+</navigation>
