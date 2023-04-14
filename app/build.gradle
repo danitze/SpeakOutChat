@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdk COMPILE_SDK
+
+    defaultConfig {
+        applicationId 'com.coursework.speakoutchat'
+        minSdk MIN_SDK
+        targetSdk TARGET_SDK
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation project(":base:common")
+    implementation project(":base:database")
+    implementation project(":base:network")
+    implementation project(":base:preferences")
+    implementation project(":base:presentation")
+
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.core
+    implementation libs.androidx.annotation
+
+    implementation libs.dagger.hilt.core
+    kapt libs.dagger.hilt.compiler
+}

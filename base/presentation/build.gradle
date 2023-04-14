@@ -1,0 +1,39 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdk COMPILE_SDK
+
+    defaultConfig {
+        minSdk MIN_SDK
+        targetSdk TARGET_SDK
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+        }
+    }
+}
+
+dependencies {
+    api project(":base:common")
+
+    implementation libs.google.material
+
+    api libs.androidx.lifecycle.viewmodel
+    api libs.androidx.lifecycle.runtime
+
+    api libs.androidx.navigation.fragment
+    api libs.androidx.navigation.ui
+
+    api libs.github.viewbindingpropertydelegate
+
+    implementation libs.dagger.hilt.core
+    kapt libs.dagger.hilt.compiler
+}

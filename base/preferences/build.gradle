@@ -1,0 +1,30 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk COMPILE_SDK
+
+    defaultConfig {
+        minSdk MIN_SDK
+        targetSdk TARGET_SDK
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+        }
+    }
+}
+
+dependencies {
+    implementation project(":base:common")
+
+    implementation libs.coroutines.core
+
+    implementation libs.dagger.hilt.core
+    kapt libs.dagger.hilt.compiler
+}

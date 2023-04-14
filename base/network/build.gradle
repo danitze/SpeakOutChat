@@ -1,0 +1,39 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk COMPILE_SDK
+
+    defaultConfig {
+        minSdk MIN_SDK
+        targetSdk TARGET_SDK
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+        }
+    }
+}
+
+dependencies {
+
+    api project(":base:common")
+
+    api libs.retrofit.core
+    api libs.moshi.core
+
+    implementation libs.coroutines.core
+
+    implementation libs.retrofit.converter.moshi
+    kapt libs.moshi.codegen
+
+    implementation libs.dagger.hilt.core
+    kapt libs.dagger.hilt.compiler
+
+    implementation libs.okhttp.interceptor
+}

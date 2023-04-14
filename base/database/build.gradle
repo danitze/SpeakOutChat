@@ -1,0 +1,32 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk COMPILE_SDK
+
+    defaultConfig {
+        minSdk MIN_SDK
+        targetSdk TARGET_SDK
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+        }
+    }
+}
+
+dependencies {
+
+    implementation libs.room.ktx
+    implementation libs.room.runtime
+    kapt libs.room.compiler
+
+    implementation libs.dagger.hilt.core
+    kapt libs.dagger.hilt.compiler
+
+    implementation libs.moshi.core
+}

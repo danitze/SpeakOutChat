@@ -1,0 +1,58 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url "https://www.jitpack.io" }
+    }
+
+    versionCatalogs {
+        libs {
+            version('lifecycle', '2.5.0')
+            version('navigation', '2.5.0')
+            version('hilt', '2.42')
+            version('room', '2.5.0-rc01')
+            version('retrofit', '2.9.0')
+            version('moshi', '1.13.0')
+
+            library('coroutines-core', 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2')
+
+            library('androidx-core', 'androidx.core:core-ktx:1.10.0')
+            library('androidx-appcompat', 'androidx.appcompat:appcompat:1.4.2')
+            library('androidx-fragment', 'androidx.fragment:fragment-ktx:1.5.0')
+            library('androidx-recyclerview', 'androidx.recyclerview:recyclerview:1.2.1')
+            library('androidx-constraintlayout', 'androidx.constraintlayout:constraintlayout:2.1.4')
+            library('androidx-annotation', 'androidx.annotation:annotation:1.4.0')
+            library('google-material', 'com.google.android.material:material:1.6.1')
+
+            library('androidx-lifecycle-viewmodel', 'androidx.lifecycle', 'lifecycle-viewmodel-ktx').versionRef('lifecycle')
+            library('androidx-lifecycle-runtime', 'androidx.lifecycle', 'lifecycle-runtime-ktx').versionRef('lifecycle')
+            library('androidx-lifecycle-compiler', 'androidx.lifecycle', 'lifecycle-compiler').versionRef('lifecycle')
+            library('androidx-lifecycle-livedata', 'androidx.lifecycle', 'lifecycle-livedata-ktx').versionRef('lifecycle')
+
+            library('androidx-navigation-fragment', 'androidx.navigation', 'navigation-fragment-ktx').versionRef('navigation')
+            library('androidx-navigation-ui', 'androidx.navigation', 'navigation-ui-ktx').versionRef('navigation')
+
+            library('dagger-hilt-core', 'com.google.dagger', 'hilt-android').versionRef('hilt')
+            library('dagger-hilt-compiler', 'com.google.dagger', 'hilt-android-compiler').versionRef('hilt')
+            library('dagger-hilt-navigation', 'androidx.hilt:hilt-navigation-fragment:1.0.0')
+            library('javax-inject', 'javax.inject:javax.inject:1')
+
+            library('room-ktx', 'androidx.room', 'room-ktx').versionRef('room')
+            library('room-runtime', 'androidx.room', 'room-runtime').versionRef('room')
+            library('room-compiler', 'androidx.room', 'room-compiler').versionRef('room')
+
+            library('retrofit-core', 'com.squareup.retrofit2', 'retrofit').versionRef('retrofit')
+            library('retrofit-converter-moshi', 'com.squareup.retrofit2', 'converter-moshi').versionRef('retrofit')
+            library('okhttp-interceptor', 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3')
+            library('okhttp', 'com.squareup.okhttp3:okhttp:4.10.0')
+            library('moshi-core', 'com.squareup.moshi', 'moshi').versionRef('moshi')
+            library('moshi-adapters', 'com.squareup.moshi', 'moshi-adapters').versionRef('moshi')
+            library('moshi-codegen', 'com.squareup.moshi', 'moshi-kotlin-codegen').versionRef('moshi')
+
+            library('github-viewbindingpropertydelegate', 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6')
+        }
+    }
+}

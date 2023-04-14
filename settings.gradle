@@ -1,0 +1,28 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+enableFeaturePreview('VERSION_CATALOGS')
+
+apply from: "dependencies.gradle"
+
+rootProject.name = "Speak out chat"
+
+include ':app'
+include ':base:presentation'
+include ':base:network'
+include ':base:common'
+include ':base:database'
+include ':base:preferences'
+include ':feature:auth-ui'
+include ':feature:auth-domain-data'
+include ':feature:menu-ui'
+include ':feature:menu-domain-data'
+include ':feature:partner-search-ui'
+include ':feature:partner-search-domain-data'
+include ':feature:chat-ui'
+include ':feature:chat-domain-data'
