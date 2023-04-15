@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--region LoginFragment -->
+    <string name="login_fragment_enter_login">Login</string>
+    <string name="login_fragment_enter_password">Password</string>
+    <string name="login_fragment_login">Log in</string>
+    <string name="login_fragment_sign_up">Sign up</string>
+    <!--endregion-->
+
+    <!--region SignUpFragment -->
+    <string name="sign_up_fragment_enter_login">Login</string>
+    <string name="sign_up_fragment_enter_password">Password</string>
+    <string name="sign_up_fragment_sign_up">Sign up</string>
+    <!--endregion-->
+
+</resources>
