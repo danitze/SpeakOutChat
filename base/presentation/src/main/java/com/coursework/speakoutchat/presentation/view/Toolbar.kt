@@ -28,8 +28,17 @@ class Toolbar @JvmOverloads constructor(
                         onStartIconClickListener?.invoke()
                     }
                 }
+
+                getString(R.styleable.Toolbar_text_description)?.let { description ->
+                    setTextDescription(description)
+                }
             }
         }
+    }
+
+    fun setTextDescription(description: String) {
+        binding.textDescription.text = description
+        binding.textDescription.isVisible = true
     }
 
 }
