@@ -1,7 +1,8 @@
-package com.coursework.speakoutchat.menu_ui
+package com.coursework.speakoutchat.menu_ui.menu
 
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.coursework.speakoutchat.menu_ui.R
 import com.coursework.speakoutchat.menu_ui.databinding.FragmentMenuBinding
 import com.coursework.speakoutchat.presentation.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -11,7 +12,7 @@ class MenuFragment : BaseFragment(R.layout.fragment_menu) {
 
     private val binding by viewBinding(FragmentMenuBinding::bind)
 
-    //private val menuViewModel: MenuViewModel by viewModels()
+    private val menuViewModel: MenuViewModel by viewModels()
 
     override fun setupObservers() {
         launchWhenStarted("Observe menuViewModel") {

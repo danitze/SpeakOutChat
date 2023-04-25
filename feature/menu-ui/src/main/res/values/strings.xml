@@ -3,4 +3,14 @@
     <!--region MenuFragment -->
     <string name="menu_fragment_start_chat">Start chat</string>
     <!--endregion-->
+
+    <!--region TopicChooseDialogFragment-->
+    <string name="topic_choose_dialog_title">Please choose the topic</string>
+    <string name="topic_choose_dialog_work_study">Work and study</string>
+    <string name="topic_choose_dialog_relationship">Relationship</string>
+    <string name="topic_choose_dialog_family">Family</string>
+    <string name="topic_choose_dialog_health">Health</string>
+    <string name="topic_choose_dialog_spiritual_problems">Spiritual problems</string>
+    <string name="topic_choose_dialog_legal_problems">Legal problems</string>
+    <!--endregion-->
 </resources>
