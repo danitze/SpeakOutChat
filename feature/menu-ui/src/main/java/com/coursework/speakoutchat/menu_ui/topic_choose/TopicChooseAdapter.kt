@@ -4,9 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.coursework.speakoutchat.menu_ui.databinding.ItemTopicChooseBinding
+import javax.inject.Inject
 
-class TopicChooseAdapter(private val items: List<DialogTopic>) :
+class TopicChooseAdapter @Inject constructor() :
     RecyclerView.Adapter<TopicChooseAdapter.TopicChooseViewHolder>() {
+
+    private val items: List<DialogTopic> = DialogTopic.values().asList()
 
     var onItemClicked: ((DialogTopic) -> Unit)? = null
 
