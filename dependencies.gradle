@@ -12,7 +12,7 @@ dependencyResolutionManagement {
         libs {
             version('lifecycle', '2.5.0')
             version('navigation', '2.5.0')
-            version('hilt', '2.42')
+            version('hilt', '2.45')
             version('room', '2.5.0-rc01')
             version('retrofit', '2.9.0')
             version('moshi', '1.13.0')

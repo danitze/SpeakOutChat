@@ -11,7 +11,7 @@ class MenuFragment : BaseFragment(R.layout.fragment_menu) {
 
     private val binding by viewBinding(FragmentMenuBinding::bind)
 
-    private val menuViewModel: MenuViewModel by viewModels()
+    //private val menuViewModel: MenuViewModel by viewModels()
 
     override fun setupObservers() {
         launchWhenStarted("Observe menuViewModel") {
