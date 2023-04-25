@@ -18,6 +18,9 @@ class TopicChooseDialogFragment : DialogFragment(R.layout.dialog_fragment_topic_
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupObservers()
+        setupUiComponents()
+        setupUiListeners()
     }
 
     override fun onDestroyView() {
