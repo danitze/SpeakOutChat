@@ -28,7 +28,7 @@ dependencies {
 
     implementation project(":base:presentation")
 
-    implementation project(":feature:partner-search-ui")
+    implementation project(":feature:chat-domain-data")
 
     implementation libs.dagger.hilt.core
     kapt libs.dagger.hilt.compiler

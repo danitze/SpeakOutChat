@@ -39,6 +39,18 @@ dependencies {
     implementation project(":base:preferences")
     implementation project(":base:presentation")
 
+    implementation project(":feature:auth-ui")
+    implementation project(":feature:menu-ui")
+    implementation project(":feature:partner-search-ui")
+    implementation project(":feature:chat-ui")
+
+    implementation project(":feature:auth-domain-data")
+    implementation project(":feature:menu-domain-data")
+    implementation project(":feature:partner-search-domain-data")
+    implementation project(":feature:chat-domain-data")
+
+    implementation project(":feature:repository-in-memory")
+
     implementation libs.androidx.appcompat
     implementation libs.androidx.core
     implementation libs.androidx.annotation

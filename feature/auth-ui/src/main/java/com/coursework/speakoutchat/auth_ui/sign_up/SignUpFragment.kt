@@ -16,15 +16,12 @@ class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
 
     override fun setupObservers() {
         launchWhenStarted("Observe signUpViewModel") {
-            TODO("Not yet implemented")
         }
     }
 
     override fun setupUiComponents() {
-        TODO("Not yet implemented")
     }
 
     override fun setupUiListeners() {
-        TODO("Not yet implemented")
     }
 }

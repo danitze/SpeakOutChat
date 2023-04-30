@@ -1,6 +1,7 @@
 package com.coursework.speakoutchat.auth_ui.login
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.coursework.speakoutchat.auth_ui.R
 import com.coursework.speakoutchat.auth_ui.databinding.FragmentLoginBinding
@@ -16,15 +17,30 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     override fun setupObservers() {
         launchWhenStarted("Observe loginViewModel") {
-            TODO("Not yet implemented")
         }
     }
 
     override fun setupUiComponents() {
-        TODO("Not yet implemented")
     }
 
     override fun setupUiListeners() {
-        TODO("Not yet implemented")
+        with(binding) {
+            buttonSignUp.setOnClickListener {
+                navigateToSignUp()
+            }
+
+            buttonLogin.setOnClickListener {
+                // TODO: Temporary
+                navigateToMenu()
+            }
+        }
+    }
+
+    private fun navigateToSignUp() {
+        findNavController().navigate(R.id.action_login_to_sign_up)
+    }
+
+    private fun navigateToMenu() {
+        findNavController().navigate(R.id.action_login_to_menu)
     }
 }

@@ -12,6 +12,16 @@
         android:label="MenuFragment" >
         <action
             android:id="@+id/action_menu_to_partner_search"
-            app:destination="@id/partner_search_nav_graph" />
+            app:destination="@id/partner_search_nav_graph">
+
+            <argument
+                android:name="topic_id"
+                app:argType="string" />
+
+            <argument
+                android:name="topic_title"
+                app:argType="integer" />
+
+        </action>
     </fragment>
 </navigation>

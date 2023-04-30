@@ -10,6 +10,15 @@
         android:id="@+id/fragment_partner_search"
         android:name="com.coursework.speakoutchat.partner_search_ui.PartnerSearchFragment"
         android:label="PartnerSearchFragment" >
+
+        <argument
+            android:name="topic_id"
+            app:argType="string" />
+
+        <argument
+            android:name="topic_title"
+            app:argType="integer" />
+
         <action
             android:id="@+id/action_partner_search_to_chat"
             app:destination="@id/chat_nav_graph" />

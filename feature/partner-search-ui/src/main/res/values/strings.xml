@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--region PartnerSearchFragment-->
-    <string name="partner_search_fragment_search_description">We are searching for a partner by topic %s</string>
+    <string name="partner_search_fragment_search_description">We are searching for a partner by topic \"%s\"</string>
     <string name="partner_search_fragment_warning">Note! If you have serious problems, it is better to visit a psychologist</string>
     <!--endregion-->
 </resources>

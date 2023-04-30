@@ -33,6 +33,7 @@ dependencies {
     api libs.androidx.lifecycle.viewmodel
     api libs.androidx.lifecycle.runtime
 
+    api libs.androidx.fragment
     api libs.androidx.navigation.fragment
     api libs.androidx.navigation.ui
 
