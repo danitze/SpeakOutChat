@@ -7,6 +7,8 @@ import com.coursework.speakoutchat.auth_ui.R
 import com.coursework.speakoutchat.auth_ui.databinding.FragmentLoginBinding
 import com.coursework.speakoutchat.presentation.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment(R.layout.fragment_login) {
@@ -16,7 +18,10 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     private val viewModel: LoginViewModel by viewModels()
 
     override fun setupObservers() {
-        launchWhenStarted("Observe loginViewModel") {
+        launchWhenStarted("Observe loginViewModel") { scope ->
+            viewModel.uiState.onEach { uiState ->
+
+            }.launchIn(scope)
         }
     }
 
@@ -30,8 +35,9 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
             }
 
             buttonLogin.setOnClickListener {
-                // TODO: Temporary
-                navigateToMenu()
+                val name = editTextLogin.text?.toString() ?: ""
+                val password = editTextPassword.text?.toString() ?: ""
+                viewModel.login(name, password)
             }
         }
     }
