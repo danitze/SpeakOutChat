@@ -1,6 +1,7 @@
 package com.coursework.speakoutchat.menu_ui.menu
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.coursework.speakoutchat.menu_ui.R
@@ -22,13 +23,30 @@ class MenuFragment : BaseFragment(R.layout.fragment_menu) {
 
     private val binding by viewBinding(FragmentMenuBinding::bind)
 
-    private val menuViewModel: MenuViewModel by viewModels()
+    private val viewModel: MenuViewModel by viewModels()
 
     @Inject
     lateinit var topicChosenEventApi: TopicChosenEventApi
 
     override fun setupObservers() {
         launchWhenStarted("Observe menuViewModel") { scope ->
+
+            viewModel.uiState.onEach { uiState ->
+
+                binding.toolbar.setTextDescription(uiState.userName)
+
+                if (uiState.logoutSuccessEvent != null) {
+                    navigateToLogin()
+                    viewModel.logoutSuccessEventConsumed()
+                }
+
+                if (uiState.logoutFailureEvent != null) {
+                    showErrorSnackbar(binding, uiState.logoutFailureEvent.messageId)
+                    viewModel.logoutFailureEventConsumed()
+                }
+
+            }.launchIn(scope)
+
             topicChosenEventApi.topicChosenEvent.filterNotNull().onEach { topic ->
                 navigateToPartnerChoose(topic)
                 topicChosenEventApi.consumeTopicChosenEvent()
@@ -41,6 +59,11 @@ class MenuFragment : BaseFragment(R.layout.fragment_menu) {
 
     override fun setupUiListeners() {
         with(binding) {
+
+            toolbar.onStartIconClickListener = {
+                viewModel.logout()
+            }
+
             buttonStartChat.setOnClickListener {
                 showTopicChooseDialog()
             }
@@ -55,5 +78,15 @@ class MenuFragment : BaseFragment(R.layout.fragment_menu) {
     private fun navigateToPartnerChoose(topic: DialogTopic) {
         val action = MenuFragmentDirections.actionMenuToPartnerSearch(topic.topic, topic.title)
         findNavController().navigate(action)
+    }
+
+    private fun navigateToLogin() {
+        val deepLink = "android-app://com.coursework.speakoutchat/auth_login"
+        findNavController().navigate(
+            deepLink,
+            NavOptions.Builder().setPopUpTo(
+                findNavController().graph.startDestinationId, true
+            ).build()
+        )
     }
 }

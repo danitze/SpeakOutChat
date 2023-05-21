@@ -27,7 +27,7 @@ class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
                 }
 
                 if (uiState.signUpErrorEvent != null) {
-                    showErrorSnackbar(uiState.signUpErrorEvent.messageId)
+                    showErrorSnackbar(binding, uiState.signUpErrorEvent.messageId)
                     viewModel.signUpErrorEventConsumed()
                 }
             }.launchIn(scope)
@@ -49,9 +49,5 @@ class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
 
     private fun navigateBack() {
         findNavController().popBackStack()
-    }
-
-    private fun showErrorSnackbar(messageId: Int) {
-        Snackbar.make(binding.root, messageId, Snackbar.LENGTH_LONG).show()
     }
 }

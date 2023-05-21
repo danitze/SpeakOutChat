@@ -31,6 +31,8 @@ dependencies {
 
     implementation project(":feature:partner-search-ui")
 
+    implementation project(":feature:auth-domain-data")
+
     implementation libs.dagger.hilt.core
     kapt libs.dagger.hilt.compiler
 }

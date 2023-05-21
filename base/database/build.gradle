@@ -21,6 +21,8 @@ android {
 
 dependencies {
 
+    implementation project(":feature:auth-domain-data")
+
     implementation libs.room.ktx
     implementation libs.room.runtime
     kapt libs.room.compiler

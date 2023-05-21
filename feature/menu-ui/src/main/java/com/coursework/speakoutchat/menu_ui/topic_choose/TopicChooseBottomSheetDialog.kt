@@ -8,13 +8,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.coursework.speakoutchat.menu_ui.databinding.DialogTopicChooseBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class TopicChooseBottomSheetDialog(
-    private val topicChosenEventApi: TopicChosenEventApi
-) : BottomSheetDialogFragment() {
+class TopicChooseBottomSheetDialog() : BottomSheetDialogFragment() {
+
+    private lateinit var topicChosenEventApi: TopicChosenEventApi
 
     companion object {
         fun newInstance(topicChosenEventApi: TopicChosenEventApi): TopicChooseBottomSheetDialog {
-            return TopicChooseBottomSheetDialog(topicChosenEventApi)
+            return TopicChooseBottomSheetDialog().apply {
+                this.topicChosenEventApi = topicChosenEventApi
+            }
         }
     }
 

@@ -23,5 +23,7 @@
                 app:argType="integer" />
 
         </action>
+
+        <deepLink app:uri="android-app://com.coursework.speakoutchat/menu" />
     </fragment>
 </navigation>

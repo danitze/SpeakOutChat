@@ -2,6 +2,7 @@
 <resources>
     <!--region MenuFragment -->
     <string name="menu_fragment_start_chat">Start chat</string>
+    <string name="menu_could_not_logout">Could not logout!</string>
     <!--endregion-->
 
     <!--region TopicChooseDialogFragment-->

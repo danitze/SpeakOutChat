@@ -6,6 +6,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.coursework.speakoutchat.auth_ui.R
 import com.coursework.speakoutchat.auth_ui.databinding.FragmentLoginBinding
 import com.coursework.speakoutchat.presentation.base.BaseFragment
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -20,6 +21,16 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     override fun setupObservers() {
         launchWhenStarted("Observe loginViewModel") { scope ->
             viewModel.uiState.onEach { uiState ->
+
+                if (uiState.loginSuccessEvent != null) {
+                    navigateToMenu()
+                    viewModel.loginSuccessEventConsumed()
+                }
+
+                if (uiState.loginErrorEvent != null) {
+                    showErrorSnackbar(binding, uiState.loginErrorEvent.messageId)
+                    viewModel.loginErrorEventConsumed()
+                }
 
             }.launchIn(scope)
         }

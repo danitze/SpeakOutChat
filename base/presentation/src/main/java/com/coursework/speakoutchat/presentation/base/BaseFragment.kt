@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.viewbinding.ViewBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -35,6 +37,10 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
                 block.invoke(this)
             }
         }
+    }
+
+    protected fun showErrorSnackbar(binding: ViewBinding, messageId: Int) {
+        Snackbar.make(binding.root, messageId, Snackbar.LENGTH_LONG).show()
     }
 
 }

@@ -1,6 +1,5 @@
 package com.coursework.speakoutchat.auth_ui.login
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coursework.speakoutchat.auth_domain_data.use_case.LoginUseCase
@@ -39,8 +38,7 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             loginUseCase.login(name, password).onSuccess {
                 _uiState.update { it.copy(loginSuccessEvent = Unit) }
-            }.onFailure { exception ->
-                Log.d("MyTag", "$exception")
+            }.onFailure {
                 _uiState.update { state ->
                     state.copy(
                         loginErrorEvent = LoginErrorEvent(R.string.unknown_failure)
@@ -48,6 +46,14 @@ class LoginViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun loginSuccessEventConsumed() {
+        _uiState.update { it.copy(loginSuccessEvent = null) }
+    }
+
+    fun loginErrorEventConsumed() {
+        _uiState.update { it.copy(loginErrorEvent = null) }
     }
 
 }
