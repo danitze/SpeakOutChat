@@ -6,12 +6,14 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class ObserveUserNameUseCase @Inject constructor(
+class UserInfoUseCase @Inject constructor(
     private val authRepository: AuthRepository
 ) {
 
     fun observeUserName(): Flow<String> = authRepository.userInfoFlow
         .filterNotNull()
         .map { it.userId }
+
+    fun observeToken(): Flow<String?> = authRepository.userInfoFlow.map { it?.token }
 
 }

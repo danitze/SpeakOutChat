@@ -3,7 +3,7 @@ package com.coursework.speakoutchat.menu_ui.menu
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coursework.speakoutchat.auth_domain_data.use_case.LogoutUseCase
-import com.coursework.speakoutchat.auth_domain_data.use_case.ObserveUserNameUseCase
+import com.coursework.speakoutchat.auth_domain_data.use_case.UserInfoUseCase
 import com.coursework.speakoutchat.menu_ui.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,13 +17,13 @@ import javax.inject.Inject
 @HiltViewModel
 class MenuViewModel @Inject constructor(
     private val logoutUseCase: LogoutUseCase,
-    observeUserNameUseCase: ObserveUserNameUseCase
+    userInfoUseCase: UserInfoUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MenuUiState())
     val uiState = _uiState.asStateFlow()
 
-    private val userNameFlow = observeUserNameUseCase.observeUserName()
+    private val userNameFlow = userInfoUseCase.observeUserName()
         .onEach { userName ->
             _uiState.update { it.copy(userName = userName) }
         }

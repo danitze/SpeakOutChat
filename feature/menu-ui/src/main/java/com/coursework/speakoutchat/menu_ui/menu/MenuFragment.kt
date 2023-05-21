@@ -29,7 +29,7 @@ class MenuFragment : BaseFragment(R.layout.fragment_menu) {
     lateinit var topicChosenEventApi: TopicChosenEventApi
 
     override fun setupObservers() {
-        launchWhenStarted("Observe menuViewModel") { scope ->
+        launchWhenStarted("Observe MenuFragment data") { scope ->
 
             viewModel.uiState.onEach { uiState ->
 

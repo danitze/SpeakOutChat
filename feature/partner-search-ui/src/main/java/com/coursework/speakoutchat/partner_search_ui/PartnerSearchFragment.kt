@@ -1,10 +1,13 @@
 package com.coursework.speakoutchat.partner_search_ui
 
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.coursework.speakoutchat.partner_search_ui.databinding.FragmentPartnerSearchBinding
 import com.coursework.speakoutchat.presentation.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class PartnerSearchFragment : BaseFragment(R.layout.fragment_partner_search) {
@@ -13,7 +16,14 @@ class PartnerSearchFragment : BaseFragment(R.layout.fragment_partner_search) {
 
     private val args: PartnerSearchFragmentArgs by navArgs()
 
+    private val viewModel: PartnerSearchViewModel by viewModels()
+
     override fun setupObservers() {
+        launchWhenStarted("Observe PartnerSearchFragment data") { scope ->
+            viewModel.uiState.onEach { uiState ->
+
+            }.launchIn(scope)
+        }
     }
 
     override fun setupUiComponents() {

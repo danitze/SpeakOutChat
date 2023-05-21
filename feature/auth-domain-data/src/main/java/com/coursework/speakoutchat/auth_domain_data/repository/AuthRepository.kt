@@ -5,6 +5,7 @@ import com.coursework.speakoutchat.auth_domain_data.data.UserCredentials
 import com.coursework.speakoutchat.auth_domain_data.data.UserInfo
 import com.coursework.speakoutchat.auth_domain_data.login.LoginNetSource
 import com.coursework.speakoutchat.auth_domain_data.mapper.mapToUserInfo
+import com.coursework.speakoutchat.auth_domain_data.provider.UserInfoProvider
 import com.coursework.speakoutchat.auth_domain_data.sign_up.SignUpNetSource
 import com.coursework.speakoutchat.auth_domain_data.user_info.UserInfoLocalSource
 import com.coursework.speakoutchat.common.extension.flatMap
@@ -15,9 +16,11 @@ class AuthRepository @Inject constructor(
     private val signUpNetSource: SignUpNetSource,
     private val loginNetSource: LoginNetSource,
     private val userInfoLocalSource: UserInfoLocalSource
-) {
+) : UserInfoProvider {
 
-    val userInfoFlow: Flow<UserInfo?> = userInfoLocalSource.userInfoFlow
+    override val userInfoFlow: Flow<UserInfo?> = userInfoLocalSource.userInfoFlow
+
+    override suspend fun getUserInfo(): Result<UserInfo> = userInfoLocalSource.getUserInfo()
 
     suspend fun signUp(userCredentials: UserCredentials): Result<Unit> {
         return signUpNetSource.signUp(userCredentials)

@@ -27,4 +27,9 @@ dependencies {
     kapt libs.dagger.hilt.compiler
 
     implementation libs.androidx.lifecycle.runtime
+
+    implementation libs.reactivex.rxjava
+
+    implementation libs.moshi.core
+    implementation libs.moshi.kotlin
 }

@@ -12,6 +12,9 @@ interface UserInfoDao {
     @Query("SELECT * FROM user_info")
     fun observeUserInfo(): Flow<List<UserInfo>>
 
+    @Query("SELECT * FROM user_info")
+    suspend fun getUserInfo(): UserInfo
+
     @Upsert
     suspend fun upsertUserInfo(userInfo: UserInfo)
 

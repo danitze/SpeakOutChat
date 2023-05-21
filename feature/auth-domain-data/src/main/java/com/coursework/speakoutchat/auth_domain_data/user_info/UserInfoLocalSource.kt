@@ -14,6 +14,10 @@ class UserInfoLocalSource @Inject constructor(
         userInfoList.getOrNull(0)
     }
 
+    suspend fun getUserInfo(): Result<UserInfo> = kotlin.runCatching {
+        userInfoDao.getUserInfo()
+    }
+
     suspend fun upsertUserInfo(userInfo: UserInfo): Result<Unit> = kotlin.runCatching {
         userInfoDao.upsertUserInfo(userInfo)
     }
