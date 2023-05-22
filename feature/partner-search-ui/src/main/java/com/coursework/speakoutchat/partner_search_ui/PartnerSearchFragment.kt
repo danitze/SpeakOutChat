@@ -46,8 +46,10 @@ class PartnerSearchFragment : BaseFragment(R.layout.fragment_partner_search) {
     }
 
     private fun navigateToChat(partnerId: String) {
-        val action = PartnerSearchFragmentDirections.actionPartnerSearchToChat(partnerId)
-        findNavController().navigate(action)
+        PartnerSearchFragmentDirections.actionPartnerSearchToChat(partnerId, args.topicTitle)
+            .apply {
+                findNavController().navigate(this)
+            }
     }
 
 }

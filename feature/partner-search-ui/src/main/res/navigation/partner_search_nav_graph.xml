@@ -27,6 +27,10 @@
                 android:name="partner_id"
                 app:argType="string" />
 
+            <argument
+                android:name="topic_title"
+                app:argType="integer" />
+
         </action>
     </fragment>
 </navigation>
