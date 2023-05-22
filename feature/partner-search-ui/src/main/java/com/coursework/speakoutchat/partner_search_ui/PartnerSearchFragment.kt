@@ -1,6 +1,7 @@
 package com.coursework.speakoutchat.partner_search_ui
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.coursework.speakoutchat.partner_search_ui.databinding.FragmentPartnerSearchBinding
@@ -22,6 +23,11 @@ class PartnerSearchFragment : BaseFragment(R.layout.fragment_partner_search) {
         launchWhenStarted("Observe PartnerSearchFragment data") { scope ->
             viewModel.uiState.onEach { uiState ->
 
+                if (uiState.partnerFoundEvent != null) {
+                    navigateToChat(uiState.partnerFoundEvent.partnerId)
+                    viewModel.partnerFoundEventConsumed()
+                }
+
             }.launchIn(scope)
         }
     }
@@ -39,5 +45,9 @@ class PartnerSearchFragment : BaseFragment(R.layout.fragment_partner_search) {
     override fun setupUiListeners() {
     }
 
+    private fun navigateToChat(partnerId: String) {
+        val action = PartnerSearchFragmentDirections.actionPartnerSearchToChat(partnerId)
+        findNavController().navigate(action)
+    }
 
 }

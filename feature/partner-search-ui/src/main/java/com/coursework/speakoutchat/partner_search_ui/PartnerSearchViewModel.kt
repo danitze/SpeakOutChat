@@ -37,7 +37,7 @@ class PartnerSearchViewModel @Inject constructor(
     }
 
     private val partnerIdFlow = stompCommunicationUseCase.observeMessages().onEach { partnerId ->
-        // TODO: move to chat
+        _uiState.update { it.copy(partnerFoundEvent = PartnerFoundEvent(partnerId)) }
     }
 
     init {
@@ -72,6 +72,14 @@ class PartnerSearchViewModel @Inject constructor(
             stompLifecycleFlow.launchIn(this)
             partnerIdFlow.launchIn(this)
         }
+    }
+
+    fun stompErrorEventConsumed() {
+        _uiState.update { it.copy(stompErrorEvent = null) }
+    }
+
+    fun partnerFoundEventConsumed() {
+        _uiState.update { it.copy(partnerFoundEvent = null) }
     }
 
 }
