@@ -40,6 +40,11 @@ class ChatRepository @Inject constructor(
     suspend fun sendMessage(content: String, receiverId: String): Result<Unit> = userInfoProvider
         .getUserInfo()
         .flatMap { userInfo ->
+            messageLocalSource.upsertMessage(
+                senderId = userInfo.userId,
+                receiverId = receiverId,
+                content = content
+            )
             chatNetSource.sendMessage(
                 userId = userInfo.userId,
                 receiverId = receiverId,

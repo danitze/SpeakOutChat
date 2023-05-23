@@ -21,7 +21,9 @@ class ChatNetSource @Inject constructor(
         .observeStompLifecycle().map { mapToStompLifecycleEvent(it) }
 
     fun observeMessages(userId: String): Flow<Message> = chatStompService
-        .observeMessages(userId).map { it.payload }.map { toMessage(moshi, it) }.filterNotNull()
+        .observeMessages(userId)
+        .map { it.payload.removeSurrounding("\"") }
+        .map { toMessage(moshi, it) }.filterNotNull()
 
     fun connect(userInfo: UserInfo): Result<Unit> = kotlin.runCatching {
         chatStompService.connect(userInfo)

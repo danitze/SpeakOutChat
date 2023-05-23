@@ -12,6 +12,9 @@ interface MessageDao {
     @Query("SELECT * FROM message ORDER BY time_stamp ASC")
     fun observeMessages(): Flow<List<Message>>
 
+    @Query("DELETE FROM message")
+    suspend fun clearMessages()
+
     @Upsert
     suspend fun upsertMessage(message: Message)
 

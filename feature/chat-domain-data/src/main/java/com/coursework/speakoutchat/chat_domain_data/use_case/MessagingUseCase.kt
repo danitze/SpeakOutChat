@@ -16,21 +16,22 @@ import javax.inject.Inject
 
 class MessagingUseCase @Inject constructor(
     private val repository: ChatRepository,
-    private val userInfoProvider: UserInfoProvider
+    userInfoProvider: UserInfoProvider
 ) {
 
-    suspend fun observeMessages(): Flow<List<MessageUiModel>> =
-        withContext(Dispatchers.IO + CoroutineName("Observe messages")) {
+    val savedMessagesFlow: Flow<List<MessageUiModel>> = combine(
+        userInfoProvider.userInfoFlow.filterNotNull().map { it.userId },
+        repository.observeSavedMessages()
+    ) { userId, savedMessages ->
+        savedMessages.map { toMessageUiModel(it, userId) }
+    }
+
+    suspend fun startObservingMessages() =
+        withContext(Dispatchers.IO + CoroutineName("Start observing messages")) {
             repository.observeMessages().launchIn(this)
-            combine(
-                userInfoProvider.userInfoFlow.filterNotNull().map { it.userId },
-                repository.observeSavedMessages()
-            ) { userId, savedMessages ->
-                savedMessages.map { toMessageUiModel(it, userId) }
-            }
         }
 
-    suspend fun sendMessage(content: String, receiverId: String) =
+    suspend fun sendMessage(content: String, receiverId: String): Result<Unit> =
         withContext(Dispatchers.IO + CoroutineName("Send message")) {
             repository.sendMessage(content, receiverId)
         }

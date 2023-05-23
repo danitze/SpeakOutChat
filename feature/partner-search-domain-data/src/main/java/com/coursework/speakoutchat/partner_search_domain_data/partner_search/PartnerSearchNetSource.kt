@@ -18,7 +18,7 @@ class PartnerSearchNetSource @Inject constructor(
         .observeStompLifecycle().map { mapToStompLifecycleEvent(it) }
 
     fun observeMessages(userId: String): Flow<String> = partnerSearchStompService
-        .observeMessages(userId).map { it.payload }
+        .observeMessages(userId).map { it.payload.removeSurrounding("\"") }
 
     fun connect(userInfo: UserInfo): Result<Unit> = kotlin.runCatching {
         partnerSearchStompService.connect(userInfo)

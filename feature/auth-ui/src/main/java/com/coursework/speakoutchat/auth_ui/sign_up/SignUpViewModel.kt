@@ -1,9 +1,7 @@
 package com.coursework.speakoutchat.auth_ui.sign_up
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.coursework.speakoutchat.auth_domain_data.use_case.LoginUseCase
 import com.coursework.speakoutchat.auth_domain_data.use_case.SignUpUseCase
 import com.coursework.speakoutchat.auth_ui.R
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -41,7 +39,6 @@ class SignUpViewModel @Inject constructor(
             signUpUseCase.signUp(name, password).onSuccess {
                 _uiState.update { it.copy(signUpSuccessEvent = Unit) }
             }.onFailure { exception ->
-                Log.d("MyTag", "$exception")
                 _uiState.update { state ->
                     state.copy(
                         signUpErrorEvent = SignUpErrorEvent(R.string.unknown_failure)

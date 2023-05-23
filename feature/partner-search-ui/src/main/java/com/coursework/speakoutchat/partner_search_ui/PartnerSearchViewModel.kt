@@ -52,7 +52,6 @@ class PartnerSearchViewModel @Inject constructor(
     }
 
     private fun onStompConnected() {
-        stompCommunicationUseCase.observeMessages()
         sendPairingMessage()
     }
 
