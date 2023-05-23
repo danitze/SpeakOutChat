@@ -1,9 +1,9 @@
 package com.coursework.speakoutchat.partner_search_domain_data.partner_search
 
 import com.coursework.speakoutchat.auth_domain_data.data.UserInfo
-import com.coursework.speakoutchat.partner_search_domain_data.data.StompLifecycleEvent
+import com.coursework.speakoutchat.network.stomp.StompLifecycleEvent
 import com.coursework.speakoutchat.partner_search_domain_data.data.UserTopic
-import com.coursework.speakoutchat.partner_search_domain_data.data.mapToStompLifecycleEvent
+import com.coursework.speakoutchat.network.stomp.mapToStompLifecycleEvent
 import com.squareup.moshi.Moshi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

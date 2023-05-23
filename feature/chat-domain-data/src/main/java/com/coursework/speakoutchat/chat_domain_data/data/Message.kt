@@ -12,7 +12,7 @@ data class Message(
     @Transient
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")
-    val id: Int,
+    val id: Int = 0,
 
     @ColumnInfo(name = "sender_id")
     val senderId: String,

@@ -2,7 +2,7 @@ package com.coursework.speakoutchat.partner_search_domain_data.repository
 
 import com.coursework.speakoutchat.auth_domain_data.provider.UserInfoProvider
 import com.coursework.speakoutchat.common.extension.flatMap
-import com.coursework.speakoutchat.partner_search_domain_data.data.StompLifecycleEvent
+import com.coursework.speakoutchat.network.stomp.StompLifecycleEvent
 import com.coursework.speakoutchat.partner_search_domain_data.partner_search.PartnerSearchNetSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filterNotNull

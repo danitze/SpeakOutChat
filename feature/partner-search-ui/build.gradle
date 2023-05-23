@@ -29,6 +29,7 @@ dependencies {
 
     implementation project(":base:common")
     implementation project(":base:presentation")
+    implementation project(":base:network")
 
     implementation project(":feature:partner-search-domain-data")
 

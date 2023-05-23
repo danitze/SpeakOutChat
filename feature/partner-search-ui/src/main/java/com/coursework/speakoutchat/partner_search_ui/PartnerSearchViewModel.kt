@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coursework.speakoutchat.common.extension.require
-import com.coursework.speakoutchat.partner_search_domain_data.data.StompLifecycleEvent
+import com.coursework.speakoutchat.network.stomp.StompLifecycleEvent
 import com.coursework.speakoutchat.partner_search_domain_data.use_case.ConnectUseCase
 import com.coursework.speakoutchat.partner_search_domain_data.use_case.StompCommunicationUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

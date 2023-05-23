@@ -1,4 +1,4 @@
-package com.coursework.speakoutchat.partner_search_domain_data.data
+package com.coursework.speakoutchat.network.stomp
 
 import ua.naiksoftware.stomp.dto.LifecycleEvent
 

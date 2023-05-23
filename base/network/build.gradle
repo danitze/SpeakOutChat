@@ -36,4 +36,6 @@ dependencies {
     kapt libs.dagger.hilt.compiler
 
     implementation libs.okhttp.interceptor
+
+    implementation libs.github.stompprotocolandroid
 }
