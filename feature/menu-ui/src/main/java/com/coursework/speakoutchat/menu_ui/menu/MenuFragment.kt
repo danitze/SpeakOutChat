@@ -28,6 +28,9 @@ class MenuFragment : BaseFragment(R.layout.fragment_menu) {
     @Inject
     lateinit var topicChosenEventApi: TopicChosenEventApi
 
+    @Inject
+    lateinit var navigateToLoginEventApi: NavigateToLoginEventApi
+
     override fun setupObservers() {
         launchWhenStarted("Observe MenuFragment data") { scope ->
 
@@ -81,12 +84,6 @@ class MenuFragment : BaseFragment(R.layout.fragment_menu) {
     }
 
     private fun navigateToLogin() {
-        val deepLink = "android-app://com.coursework.speakoutchat/auth_login"
-        findNavController().navigate(
-            deepLink,
-            NavOptions.Builder().setPopUpTo(
-                findNavController().graph.startDestinationId, true
-            ).build()
-        )
+        navigateToLoginEventApi.navigateToLogin()
     }
 }

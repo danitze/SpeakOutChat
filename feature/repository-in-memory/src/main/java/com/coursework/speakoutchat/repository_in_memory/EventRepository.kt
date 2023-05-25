@@ -8,6 +8,10 @@ import javax.inject.Singleton
 @Singleton
 class EventRepository @Inject constructor() {
 
-    val topicChosenEvent = MutableStateFlow<DialogTopic?>(null)
+    internal val topicChosenEvent = MutableStateFlow<DialogTopic?>(null)
+
+    internal val navigateToLoginEvent = MutableStateFlow<Unit?>(null)
+
+    internal val navigateToMenuEvent = MutableStateFlow<Unit?>(null)
 
 }

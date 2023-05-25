@@ -24,7 +24,11 @@ class PartnerSearchStompService @Inject constructor(
 
     fun connect(userInfo: UserInfo) {
         val headers = listOf(StompHeader("Authorization", userInfo.token.asToken()))
-        stompClient.require().connect(headers)
+        stompClient.connect(headers)
+    }
+
+    fun disconnect() {
+        stompClient.disconnect()
     }
 
     fun sendPairingMessage(userTopicSerialized: String) {

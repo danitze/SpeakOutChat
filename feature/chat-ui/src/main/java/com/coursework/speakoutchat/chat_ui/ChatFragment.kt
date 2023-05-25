@@ -1,8 +1,10 @@
 package com.coursework.speakoutchat.chat_ui
 
 import android.app.Activity
+import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -28,6 +30,21 @@ class ChatFragment : BaseFragment(R.layout.fragment_chat) {
     @Inject
     lateinit var chatAdapter: ChatAdapter
 
+    @Inject
+    lateinit var navigateToMenuEventApi: NavigateToMenuEventApi
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            viewModel.disconnect()
+        }
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(onBackPressedCallback)
+    }
+
     override fun setupObservers() {
         launchWhenStarted("Observe ChatFragment data") { scope ->
             viewModel.uiState.onEach { uiState ->
@@ -37,6 +54,11 @@ class ChatFragment : BaseFragment(R.layout.fragment_chat) {
                 if (uiState.clearMessageEditTextEvent != null) {
                     binding.editTextMessage.setText("")
                     viewModel.clearMessageEditTextEventConsumed()
+                }
+
+                if (uiState.disconnectedEvent != null) {
+                    navigateToMenuEventApi.navigateToMenu()
+                    viewModel.disconnectedEventConsumed()
                 }
 
                 chatAdapter.submitList(uiState.messages)

@@ -25,6 +25,8 @@ dependencies {
 
     implementation project(":feature:menu-ui")
 
+    implementation project(":feature:chat-ui")
+
     implementation libs.coroutines.core
 
     implementation libs.dagger.hilt.core

@@ -27,7 +27,11 @@ class ChatStompService @Inject constructor(
             StompHeader("Authorization", userInfo.token.asToken()),
             StompHeader("user_id", userInfo.userId)
         )
-        stompClient.require().connect(headers)
+        stompClient.connect(headers)
+    }
+
+    fun disconnect() {
+        stompClient.disconnect()
     }
 
     fun sendMessage(messageSerialized: String) {

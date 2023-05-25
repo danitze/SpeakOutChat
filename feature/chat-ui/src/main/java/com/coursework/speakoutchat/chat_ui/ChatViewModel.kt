@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coursework.speakoutchat.chat_domain_data.data.MessageUiModel
+import com.coursework.speakoutchat.chat_domain_data.use_case.ClearMessagesUseCase
 import com.coursework.speakoutchat.chat_domain_data.use_case.ConnectUseCase
 import com.coursework.speakoutchat.chat_domain_data.use_case.MessagingUseCase
 import com.coursework.speakoutchat.common.extension.require
@@ -22,6 +23,7 @@ import javax.inject.Inject
 class ChatViewModel @Inject constructor(
     private val connectUseCase: ConnectUseCase,
     private val messagingUseCase: MessagingUseCase,
+    private val clearMessagesUseCase: ClearMessagesUseCase,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -44,8 +46,11 @@ class ChatViewModel @Inject constructor(
         }
 
     init {
-        observeIntermediateFlows()
-        connect()
+        viewModelScope.launch {
+            clearMessagesUseCase.clearMessages()
+            observeIntermediateFlows()
+            connect()
+        }
     }
 
     fun onMessageChanged(message: String) {
@@ -58,6 +63,13 @@ class ChatViewModel @Inject constructor(
             val receiverId = savedStateHandle.get<String>("partner_id").require()
             messagingUseCase.sendMessage(content, receiverId)
             _uiState.update { it.copy(clearMessageEditTextEvent = Unit) }
+        }
+    }
+
+    fun disconnect() {
+        viewModelScope.launch {
+            connectUseCase.disconnect()
+            _uiState.update { it.copy(disconnectedEvent = Unit) }
         }
     }
 
@@ -90,6 +102,10 @@ class ChatViewModel @Inject constructor(
 
     fun clearMessageEditTextEventConsumed() {
         _uiState.update { it.copy(clearMessageEditTextEvent = null) }
+    }
+
+    fun disconnectedEventConsumed() {
+        _uiState.update { it.copy(disconnectedEvent = null) }
     }
 
 }

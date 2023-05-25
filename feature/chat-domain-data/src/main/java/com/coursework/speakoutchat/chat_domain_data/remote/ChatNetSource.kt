@@ -29,6 +29,10 @@ class ChatNetSource @Inject constructor(
         chatStompService.connect(userInfo)
     }
 
+    fun disconnect(): Result<Unit> = kotlin.runCatching {
+        chatStompService.disconnect()
+    }
+
     fun sendMessage(userId: String, receiverId: String, content: String): Result<Unit> = kotlin
         .runCatching {
             val message = Message(

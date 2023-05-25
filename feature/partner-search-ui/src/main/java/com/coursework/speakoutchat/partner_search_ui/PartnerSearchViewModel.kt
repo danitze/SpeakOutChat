@@ -37,6 +37,7 @@ class PartnerSearchViewModel @Inject constructor(
     }
 
     private val partnerIdFlow = stompCommunicationUseCase.observeMessages().onEach { partnerId ->
+        connectUseCase.disconnect()
         _uiState.update { it.copy(partnerFoundEvent = PartnerFoundEvent(partnerId)) }
     }
 

@@ -24,6 +24,10 @@ class PartnerSearchNetSource @Inject constructor(
         partnerSearchStompService.connect(userInfo)
     }
 
+    fun disconnect(): Result<Unit> = kotlin.runCatching {
+        partnerSearchStompService.disconnect()
+    }
+
     fun sendPairingMessage(userId: String, topicId: String): Result<Unit> = kotlin.runCatching {
         val userTopic = UserTopic(userId, topicId)
         val userTopicSerialized = moshi.adapter(UserTopic::class.java).toJson(userTopic)

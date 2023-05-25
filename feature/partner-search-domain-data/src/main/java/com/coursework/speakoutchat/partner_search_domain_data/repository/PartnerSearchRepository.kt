@@ -28,6 +28,8 @@ class PartnerSearchRepository @Inject constructor(
             partnerSearchNetSource.connect(userInfo)
         }
 
+    fun  disconnect(): Result<Unit> = partnerSearchNetSource.disconnect()
+
     suspend fun sendPairingMessage(topicId: String): Result<Unit> = userInfoProvider.getUserInfo()
         .map { userInfo -> userInfo.userId }
         .flatMap { userId ->

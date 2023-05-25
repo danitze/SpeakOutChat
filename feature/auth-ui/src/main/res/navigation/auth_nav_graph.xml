@@ -17,7 +17,9 @@
 
         <action
             android:id="@+id/action_login_to_menu"
-            app:destination="@id/menu_nav_graph" />
+            app:destination="@id/menu_nav_graph"
+            app:popUpTo="@id/fragment_login"
+            app:popUpToInclusive="true"/>
 
         <deepLink app:uri="android-app://com.coursework.speakoutchat/auth_login" />
     </fragment>

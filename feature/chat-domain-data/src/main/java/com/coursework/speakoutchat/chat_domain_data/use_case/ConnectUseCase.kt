@@ -20,4 +20,9 @@ class ConnectUseCase @Inject constructor(
             repository.connect()
         }
 
+    suspend fun disconnect(): Result<Unit> =
+        withContext(Dispatchers.IO + CoroutineName("Disconnect")) {
+            repository.disconnect()
+        }
+
 }

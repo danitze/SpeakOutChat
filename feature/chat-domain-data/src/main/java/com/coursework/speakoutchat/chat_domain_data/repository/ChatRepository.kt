@@ -37,6 +37,8 @@ class ChatRepository @Inject constructor(
             chatNetSource.connect(userInfo)
         }
 
+    fun disconnect(): Result<Unit> = chatNetSource.disconnect()
+
     suspend fun sendMessage(content: String, receiverId: String): Result<Unit> = userInfoProvider
         .getUserInfo()
         .flatMap { userInfo ->
@@ -51,5 +53,7 @@ class ChatRepository @Inject constructor(
                 content = content
             )
         }
+
+    suspend fun clearMessages(): Result<Unit> = messageLocalSource.clearMessages()
 
 }
