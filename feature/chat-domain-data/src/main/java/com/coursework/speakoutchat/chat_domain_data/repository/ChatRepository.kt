@@ -30,6 +30,11 @@ class ChatRepository @Inject constructor(
             messageLocalSource.upsertMessage(message)
         }
 
+    fun observePartnerDisconnectedMessages(): Flow<Unit> = userInfoProvider.userInfoFlow
+        .filterNotNull()
+        .map { it.userId }
+        .flatMapLatest { chatNetSource.observePartnerDisconnectMessages(it) }
+
     fun observeSavedMessages(): Flow<List<Message>> = messageLocalSource.observeMessages()
 
     suspend fun connect(): Result<Unit> = userInfoProvider.getUserInfo()

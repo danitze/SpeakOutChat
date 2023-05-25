@@ -61,6 +61,11 @@ class ChatFragment : BaseFragment(R.layout.fragment_chat) {
                     viewModel.disconnectedEventConsumed()
                 }
 
+                if (uiState.partnerDisconnectedEvent != null) {
+                    showErrorSnackbar(binding, R.string.partner_disconnected_message)
+                    viewModel.partnerDisconnectedEventConsumed()
+                }
+
                 chatAdapter.submitList(uiState.messages)
 
             }.launchIn(scope)

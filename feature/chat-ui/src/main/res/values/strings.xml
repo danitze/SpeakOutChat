@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--region CharFragment-->
+    <string name="partner_disconnected_message">Your partner disconnected</string>
+    <!--endregion-->
+</resources>

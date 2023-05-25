@@ -25,6 +25,9 @@ class ChatNetSource @Inject constructor(
         .map { it.payload.removeSurrounding("\"") }
         .map { toMessage(moshi, it) }.filterNotNull()
 
+    fun observePartnerDisconnectMessages(userId: String): Flow<Unit> = chatStompService
+        .observePartnerDisconnectMessages(userId)
+
     fun connect(userInfo: UserInfo): Result<Unit> = kotlin.runCatching {
         chatStompService.connect(userInfo)
     }

@@ -7,7 +7,8 @@ data class ChatUiState(
     val messages: List<MessageUiModel> = listOf(),
     val stompErrorEvent: Unit? = null,
     val clearMessageEditTextEvent: Unit? = null,
-    val disconnectedEvent: Unit? = null
+    val disconnectedEvent: Unit? = null,
+    val partnerDisconnectedEvent: Unit? = null
 ) {
 
     val isSendButtonEnabled: Boolean

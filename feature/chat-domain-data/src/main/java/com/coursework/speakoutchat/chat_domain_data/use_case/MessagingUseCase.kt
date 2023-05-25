@@ -26,6 +26,9 @@ class MessagingUseCase @Inject constructor(
         savedMessages.map { toMessageUiModel(it, userId) }
     }
 
+    val partnerDisconnectedMessagesFlow: Flow<Unit> = repository
+        .observePartnerDisconnectedMessages()
+
     suspend fun startObservingMessages() =
         withContext(Dispatchers.IO + CoroutineName("Start observing messages")) {
             repository.observeMessages().launchIn(this)

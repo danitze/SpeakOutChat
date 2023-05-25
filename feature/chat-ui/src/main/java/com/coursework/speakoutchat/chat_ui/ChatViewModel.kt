@@ -40,9 +40,16 @@ class ChatViewModel @Inject constructor(
         }
     }
 
-    private val messagesFlow: Flow<List<MessageUiModel>> = messagingUseCase.savedMessagesFlow
+    private val messagesFlow: Flow<List<MessageUiModel>> = messagingUseCase
+        .savedMessagesFlow
         .onEach { messages ->
             _uiState.update { it.copy(messages = messages) }
+        }
+
+    private val partnerDisconnectedEventFlow: Flow<Unit> = messagingUseCase
+        .partnerDisconnectedMessagesFlow
+        .onEach {
+            _uiState.update { it.copy(partnerDisconnectedEvent = Unit) }
         }
 
     init {
@@ -93,6 +100,7 @@ class ChatViewModel @Inject constructor(
         viewModelScope.launch {
             stompLifecycleFlow.launchIn(this)
             messagesFlow.launchIn(this)
+            partnerDisconnectedEventFlow.launchIn(this)
         }
     }
 
@@ -106,6 +114,10 @@ class ChatViewModel @Inject constructor(
 
     fun disconnectedEventConsumed() {
         _uiState.update { it.copy(disconnectedEvent = null) }
+    }
+
+    fun partnerDisconnectedEventConsumed() {
+        _uiState.update { it.copy(partnerDisconnectedEvent = null) }
     }
 
 }

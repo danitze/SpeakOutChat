@@ -2,7 +2,7 @@ package com.coursework.speakoutchat.chat_domain_data.remote
 
 import com.coursework.speakoutchat.auth_domain_data.data.UserInfo
 import com.coursework.speakoutchat.common.extension.asToken
-import com.coursework.speakoutchat.common.extension.require
+import com.coursework.speakoutchat.common.extension.mapToUnit
 import com.coursework.speakoutchat.common.extension.toFlow
 import com.coursework.speakoutchat.network.type.ChatStompClient
 import kotlinx.coroutines.flow.Flow
@@ -21,6 +21,11 @@ class ChatStompService @Inject constructor(
     fun observeMessages(userId: String): Flow<StompMessage> = stompClient
         .topic("/queue/message/$userId")
         .toFlow()
+
+    fun observePartnerDisconnectMessages(userId: String): Flow<Unit> = stompClient
+        .topic("/queue/disconnect/$userId")
+        .toFlow()
+        .mapToUnit()
 
     fun connect(userInfo: UserInfo) {
         val headers = listOf(
