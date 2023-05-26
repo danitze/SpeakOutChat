@@ -19,7 +19,7 @@ class NetworkModule {
     fun provideRetrofit(
         okHttpClient: OkHttpClient
     ): Retrofit = Retrofit.Builder()
-        .baseUrl("http://10.0.2.2:9898")
+        .baseUrl("http://10.0.2.2:9901")
         .addConverterFactory(MoshiConverterFactory.create())
         .client(okHttpClient)
         .build()

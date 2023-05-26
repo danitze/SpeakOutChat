@@ -2,7 +2,6 @@ package com.coursework.speakoutchat.partner_search_domain_data.partner_search
 
 import com.coursework.speakoutchat.auth_domain_data.data.UserInfo
 import com.coursework.speakoutchat.common.extension.asToken
-import com.coursework.speakoutchat.common.extension.require
 import com.coursework.speakoutchat.common.extension.toFlow
 import com.coursework.speakoutchat.network.type.PairingStompClient
 import kotlinx.coroutines.flow.Flow
