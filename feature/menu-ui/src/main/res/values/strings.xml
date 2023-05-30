@@ -13,5 +13,6 @@
     <string name="topic_choose_dialog_health">Health</string>
     <string name="topic_choose_dialog_spiritual_problems">Spiritual problems</string>
     <string name="topic_choose_dialog_legal_problems">Legal problems</string>
+    <string name="topic_choose_dialog_other_problems">Other problems</string>
     <!--endregion-->
 </resources>

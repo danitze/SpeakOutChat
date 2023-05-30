@@ -8,5 +8,6 @@ enum class DialogTopic(val topic: String, val title: Int) {
     FAMILY("FAMILY", R.string.topic_choose_dialog_family),
     HEALTH("HEALTH", R.string.topic_choose_dialog_health),
     SPIRITUAL_PROBLEMS("SPIRITUAL_PROBLEMS", R.string.topic_choose_dialog_spiritual_problems),
-    LEGAL_PROBLEMS("LEGAL_PROBLEMS", R.string.topic_choose_dialog_legal_problems)
+    LEGAL_PROBLEMS("LEGAL_PROBLEMS", R.string.topic_choose_dialog_legal_problems),
+    OTHER_PROBLEMS("OTHER_PROBLEMS", R.string.topic_choose_dialog_other_problems)
 }
