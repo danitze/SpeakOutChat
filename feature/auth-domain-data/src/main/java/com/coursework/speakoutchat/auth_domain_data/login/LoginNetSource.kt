@@ -8,7 +8,8 @@ class LoginNetSource @Inject constructor(
 ) {
 
     suspend fun authenticate(authRequest: AuthRequest): Result<String> = kotlin.runCatching {
-        loginApiService.authenticate(authRequest).body()?.string() ?: ""
+        loginApiService.authenticate(authRequest).body()?.string()
+            ?: throw IllegalArgumentException("Unauthorized")
     }
 
 }
